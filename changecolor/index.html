@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Color Chang</title>
+  </head>
+  <body>
+    <h1>Color Change Box</h1>
+    <div class="container" class="container-box"></div>
+    <button class="changeColorButton">Change Color</button>
+  </body>
+</html>
+
+<style>
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin-top: 50px;
+}
+
+h1 {
+    color: #333;
+}
+
+.container {
+    width: 200px;
+    height: 200px;
+    background-color: #ad1717;
+    margin: 20px auto;
+    border: 2px solid #050000;
+    border-radius: 10px;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
+</style>
+<script>
+function getRandomColor(numColors = 5) {
+  let randomColor;
+  for (let i = 0; i < numColors; i++) {
+    randomColor =
+      "#" +
+      Math.floor(Math.random() * 16777215)
+        .toString(16)
+        .padStart(6, "0");
+  }
+  console.log(randomColor);
+  return randomColor;
+}
+document.addEventListener("DOMContentLoaded", () => {
+  const container = document.getElementsByClassName("container");
+  const changeColorButton = document.getElementsByClassName(
+    "changeColorButton"
+  );
+  for (let i = 0; i < changeColorButton.length; i++) {
+    changeColorButton[i].addEventListener("click", () => {
+      console.log("clicked");
+      container[0].style.backgroundColor = getRandomColor();
+    });
+  }
+});
+</script>
